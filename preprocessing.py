@@ -31,7 +31,7 @@ def load_dataset(path, metadata):
             counters[label] += 1
 
     # RESIZE PARAMETER TO BE TUNED
-    images = np.zeros((len(files), 90, 120, 3), dtype = float)
+    images = np.zeros((len(files), 150, 200, 3), dtype = float)
     encoded_labels = np.zeros((len(files)), dtype = int)
     # TODO: Use map
     #images = list(map(lambda file: cv2.resize(cv2.imread(file), (120, 90)), files))
@@ -75,8 +75,10 @@ def augment_dataset(images, labels):
         augmented_images[2*i] = images[i]
         augmented_labels[2*i] = labels[i]
         # Where Augmentation Happens
+        # 1. Horizontal Flipping
         augmented_images[2*i+1] = horizontal_flip(images[i])
         augmented_labels[2*i+1] = labels[i]
+        # TODO: Random Transformation (rotations, shearing, etc)
     return augmented_images, augmented_labels
     
 
@@ -98,3 +100,5 @@ if __name__ == "__main__":
     report_distribution(labels)
     augmented_images, augmented_labels = augment_dataset(images, labels)
     report_distribution(augmented_labels)
+    save_tensor(augmented_images, './dataset/images_augmented.pickle')
+    save_tensor(augmented_labels, './dataset/labels_augmented.pickle')
