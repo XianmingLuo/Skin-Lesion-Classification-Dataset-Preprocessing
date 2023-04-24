@@ -40,7 +40,7 @@ def load_dataset(path, metadata):
         # For Progress Visualization
         if (i % 100 == 0):
             print(i, len(files))
-        images[i] = normalize(resize(cv2.imread(file), (90, 120)))
+        images[i] = normalize(resize(cv2.imread(file), (150, 200)))
         encoded_labels[i] = types[labels[i]]
         
     return images, encoded_labels        
