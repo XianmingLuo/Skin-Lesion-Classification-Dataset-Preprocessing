@@ -40,6 +40,7 @@ def load_dataset(path, metadata):
         # For Progress Visualization
         if (i % 100 == 0):
             print(i, len(files))
+        # RESIZE PARAMETER TO BE TUNED
         images[i] = normalize(resize(cv2.imread(file), (150, 200)))
         encoded_labels[i] = types[labels[i]]
         
@@ -50,8 +51,8 @@ def save_tensor(tensor, path):
         pickle.dump(tensor, f)
 def load_tensor(path):
     with open(path, "rb") as f:        
-        images = pickle.load(f)
-    return images
+        tensor = pickle.load(f)
+    return tensor
 def report_distribution(labels):
     distribution = np.zeros((7), dtype=int)
     for label in labels:
