@@ -1,7 +1,7 @@
 # Skin Lesion Classification Dataset Preprocessing
 # What is it?
 This is a repository that pre-processes the raw dataset used for skin lesion classification. The processing steps are as follows.
-1. Resize the images into from (450, 600, 3) to (90, 120, 3)
+1. Resize the images into from (450, 600, 3) to (150, 200, 3)
 2. Sample the dataset to make it evenly distributed. The size of the dataset becomes 100 samples x 7 classes
 3. Augment the dataset by horizontally flipping each sample, making the size of the dataset 200 samples x 7 classes
 # How to use?
@@ -11,6 +11,7 @@ git clone https://github.com/XianmingLuo/Skin-Lesion-Classification-Dataset-Prep
 ```
 2. Create directories
 ```
+cd Skin-Lesion-Classification-Dataset-Preprocessing/
 mkdir dataset
 mkdir dataset/images
 ```
